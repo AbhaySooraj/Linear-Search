@@ -3,7 +3,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-#define n 10000
 
 
 
@@ -19,29 +18,39 @@ void main()
    	struct timeval t1;
    	float elapsed;
 	
-	int x,arr[n],i,j=0;
-	printf("\n Enter value to be searched :");
-	scanf("%d",&x);
+	int x,n,i,j=0;
+	
+	printf("\n Enter number of elements ");
+	scanf("%d",&n);
+	int arr[n];
 	for(i=0;i<n;i++)
 	{
 		arr[i]=rand()%100;
 	}
+	printf("\n The elements are :");
+	for(i=0;i<n;i++)
+	{
+		printf("%d \t",arr[i]);
+	}
+	printf("\n Enter value to be searched :");
+	scanf("%d",&x);
 	gettimeofday(&t0, NULL);
 	for(i=0;i<n;i++)
 	{
 		if(arr[i]==x)
 		{
-			printf(" Element found at %d postion\n",i);
+			printf("\n Element found at %d postion\n",i);
 			j++;
 			break;
 		}
 	}
-	gettimeofday(&t1, NULL);
-	elapsed = timedifference_msec(t0, t1);
-  printf("\nCode executed in %f milliseconds.\n", elapsed);
-  	
+	
 	if(j==0)
 	{
 		printf("Element not found\n");
 	}
+	gettimeofday(&t1, NULL);
+	elapsed = timedifference_msec(t0, t1);
+  	printf("\nCode executed in %f milliseconds.\n", elapsed);
+  	
 }
